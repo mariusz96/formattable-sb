@@ -127,8 +127,7 @@ namespace FormattableSb.Tests
 
             var sql = sqlBuilder.ToFormattableString();
 
-            Assert.Equal(
-@"INSERT INTO dbo.VacationDates (Date)
+            Assert.Equal(@"INSERT INTO dbo.VacationDates (Date)
 VALUES
 ({0}),
 ({1})", sql.Format);
