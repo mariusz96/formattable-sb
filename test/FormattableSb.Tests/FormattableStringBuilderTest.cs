@@ -20,7 +20,7 @@ namespace FormattableSb.Tests
 
         [Theory]
         [MemberData(nameof(AppendInterpolated_Single_Data))]
-        public void AppendInterpolated_Single(object[] args)
+        public void AppendInterpolated_Single(object?[] args)
         {
             var fsb = new FormattableStringBuilder();
 
@@ -29,19 +29,19 @@ namespace FormattableSb.Tests
                 .ToFormattableString();
 
             Assert.Equal("{0}", fs.Format);
-            Assert.Equal(args, fs.GetArguments());
+            Assert.Equal(args.AsEnumerable(), fs.GetArguments());
         }
 
         public static IEnumerable<object[]> AppendInterpolated_Single_Data =>
             new List<object[]>
             {
-                new object[] { new object[] { "one" } },
-                new object[] { new object[] { new FormattableStringBuilder() } }
+                new object[] { new object?[] { "one" } },
+                new object[] { new object?[] { new FormattableStringBuilder() } }
             };
 
         [Theory]
         [MemberData(nameof(AppendInterpolated_Multiple_Data))]
-        public void AppendInterpolated_Multiple(object[] args)
+        public void AppendInterpolated_Multiple(object?[] args)
         {
             var fsb = new FormattableStringBuilder();
 
@@ -51,14 +51,14 @@ namespace FormattableSb.Tests
                 .ToFormattableString();
 
             Assert.Equal("{0}{1}", fs.Format);
-            Assert.Equal(args, fs.GetArguments());
+            Assert.Equal(args.AsEnumerable(), fs.GetArguments());
         }
 
         public static IEnumerable<object[]> AppendInterpolated_Multiple_Data =>
             new List<object[]>
             {
-                new object[] { new object[] { "one", "two" } },
-                new object[] { new object[] { new FormattableStringBuilder(), new FormattableStringBuilder() } }
+                new object[] { new object?[] { "one", "two" } },
+                new object[] { new object?[] { new FormattableStringBuilder(), new FormattableStringBuilder() } }
             };
 
         [Fact]
