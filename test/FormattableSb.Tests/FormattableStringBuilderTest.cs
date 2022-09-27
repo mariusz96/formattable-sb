@@ -119,33 +119,36 @@ namespace FormattableSb.Tests
         [Fact]
         public void AppendInterpolated_Readme()
         {
-            var firstDayOfSummer = new DateTime(2022, 6, 21);
-            var lastDayOfSummer = new DateTime(2022, 6, 22);
+            var fsb = new FormattableStringBuilder();
+            var args = new[] {
+                new DateTime(2022, 6, 21),
+                new DateTime(2022, 6, 22)
+            };
 
-            var sqlBuilder = new FormattableStringBuilder()
+            fsb
                 .AppendInterpolated($"INSERT INTO dbo.VacationDates (Date)")
                 .AppendLine()
                 .AppendInterpolated($"VALUES");
 
-            for (var date = firstDayOfSummer; date <= lastDayOfSummer; date = date.AddDays(1))
+            for (var date = args[0]; date <= args[1]; date = date.AddDays(1))
             {
-                sqlBuilder
+                fsb
                     .AppendLine()
                     .AppendInterpolated($"({date})");
 
-                if (date != lastDayOfSummer)
+                if (date != args[1])
                 {
-                    sqlBuilder.AppendInterpolated($",");
+                    fsb.AppendInterpolated($",");
                 }
             }
 
-            var sql = sqlBuilder.ToFormattableString();
+            var fs = fsb.ToFormattableString();
 
             Assert.Equal(@"INSERT INTO dbo.VacationDates (Date)
 VALUES
 ({0}),
-({1})", sql.Format);
-            Assert.Equal(new object[] { firstDayOfSummer, lastDayOfSummer }, sql.GetArguments());
+({1})", fs.Format);
+            Assert.Equal<object>(args, fs.GetArguments());
         }
     }
 }
