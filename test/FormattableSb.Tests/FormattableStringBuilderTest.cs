@@ -72,7 +72,7 @@ namespace FormattableSb.Tests
                 .ToFormattableString();
 
             Assert.Equal("{0,-1}", fs.Format);
-            Assert.Equal(args, fs.GetArguments());
+            Assert.Equal(args.Cast<object?>(), fs.GetArguments());
         }
 
         [Fact]
@@ -86,7 +86,7 @@ namespace FormattableSb.Tests
                 .ToFormattableString();
 
             Assert.Equal("{0:o}", fs.Format);
-            Assert.Equal(args, fs.GetArguments());
+            Assert.Equal(args.Cast<object?>(), fs.GetArguments());
         }
 
         [Fact]
@@ -100,7 +100,7 @@ namespace FormattableSb.Tests
                 .ToFormattableString();
 
             Assert.Equal("{0,-1:o}", fs.Format);
-            Assert.Equal(args, fs.GetArguments());
+            Assert.Equal(args.Cast<object?>(), fs.GetArguments());
         }
 
         [Fact]
@@ -114,7 +114,7 @@ namespace FormattableSb.Tests
                 .ToFormattableString();
 
             Assert.Equal("{{one}} {{{0}}} {{{{three}}}} {{{{{1}}}}}", fs.Format);
-            Assert.Equal(args, fs.GetArguments());
+            Assert.Equal(args.Cast<object?>(), fs.GetArguments());
         }
 
         [Fact]
