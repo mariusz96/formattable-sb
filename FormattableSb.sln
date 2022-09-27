@@ -7,6 +7,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FormattableSb", "Formattabl
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{412A8BE1-736F-4348-BB35-9D51461E395E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{1C70A6B3-5EE7-49FC-B763-08A8122223A5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormattableSb.Tests", "FormattableSb.Tests\FormattableSb.Tests.csproj", "{90151073-98FE-4BBA-A048-3E31A4B846EE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,12 +21,17 @@ Global
 		{C835A4CC-737D-4DD9-A2A8-A787CB6AF3BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C835A4CC-737D-4DD9-A2A8-A787CB6AF3BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C835A4CC-737D-4DD9-A2A8-A787CB6AF3BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90151073-98FE-4BBA-A048-3E31A4B846EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90151073-98FE-4BBA-A048-3E31A4B846EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90151073-98FE-4BBA-A048-3E31A4B846EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90151073-98FE-4BBA-A048-3E31A4B846EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{C835A4CC-737D-4DD9-A2A8-A787CB6AF3BE} = {412A8BE1-736F-4348-BB35-9D51461E395E}
+		{90151073-98FE-4BBA-A048-3E31A4B846EE} = {1C70A6B3-5EE7-49FC-B763-08A8122223A5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B23F81FD-BBB5-49BC-9EDE-848C111F87AC}
