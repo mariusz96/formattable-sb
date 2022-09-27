@@ -36,7 +36,7 @@ for (var date = firstDayOfSummer; date <= lastDayOfSummer; date = date.AddDays(1
 // ...
 var sql = sqlBuilder.ToFormattableString();
 ```
-### Usage with EF Core:
+### With EF Core:
 ```cs
 using var context = new VacationingContext();
 context.Database.ExecuteSqlInterpolated(sql);
