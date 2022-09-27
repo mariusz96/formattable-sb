@@ -31,14 +31,6 @@ namespace FormattableSb.Tests
             Assert.Equal(args, fs.GetArguments());
         }
 
-        public static IEnumerable<object[]> AppendInterpolated_Single_Data =>
-            new List<object[]>
-            {
-                new object[] { new object[] { "one" } },
-                new object[] { new object[] { new FormattableStringBuilder() } }
-            };
-
-
         [Theory]
         [MemberData(nameof(AppendInterpolated_Multiple_Data))]
         public void AppendInterpolated_Multiple(object[] args)
@@ -54,12 +46,47 @@ namespace FormattableSb.Tests
             Assert.Equal(args, fs.GetArguments());
         }
 
-        public static IEnumerable<object[]> AppendInterpolated_Multiple_Data =>
-            new List<object[]>
-            {
-                new object[] { new object[] { "one", "two" } },
-                new object[] { new object[] { new FormattableStringBuilder(), new FormattableStringBuilder() } }
-            };
+        [Theory]
+        [MemberData(nameof(AppendInterpolated_Single_Data))]
+        public void AppendInterpolated_Alignment(object[] args)
+        {
+            var fsb = new FormattableStringBuilder();
+
+            var fs = fsb
+                .AppendInterpolated($"{args[0],-1}")
+                .ToFormattableString();
+
+            Assert.Equal("{0,-1}", fs.Format);
+            Assert.Equal(args, fs.GetArguments());
+        }
+
+        [Theory]
+        [MemberData(nameof(AppendInterpolated_Single_Data))]
+        public void AppendInterpolated_FormatString(object[] args)
+        {
+            var fsb = new FormattableStringBuilder();
+
+            var fs = fsb
+                .AppendInterpolated($"{args[0]:o}")
+                .ToFormattableString();
+
+            Assert.Equal("{0:o}", fs.Format);
+            Assert.Equal(args, fs.GetArguments());
+        }
+
+        [Theory]
+        [MemberData(nameof(AppendInterpolated_Single_Data))]
+        public void AppendInterpolated_AlignmentAndFormatString(object[] args)
+        {
+            var fsb = new FormattableStringBuilder();
+
+            var fs = fsb
+                .AppendInterpolated($"{args[0],-1:o}")
+                .ToFormattableString();
+
+            Assert.Equal("{0,-1:o}", fs.Format);
+            Assert.Equal(args, fs.GetArguments());
+        }
 
         [Fact]
         public void AppendInterpolated_Braces()
@@ -101,11 +128,25 @@ namespace FormattableSb.Tests
             var sql = sqlBuilder.ToFormattableString();
 
             Assert.Equal(
-@"INSERT INTO dbo.VacationDates (Date)
+        @"INSERT INTO dbo.VacationDates (Date)
 VALUES
 ({0}),
 ({1})", sql.Format);
             Assert.Equal(new object[] { firstDayOfSummer, lastDayOfSummer }, sql.GetArguments());
         }
+
+        public static IEnumerable<object[]> AppendInterpolated_Single_Data =>
+            new List<object[]>
+            {
+                        new object[] { new object[] { "one" } },
+                        new object[] { new object[] { new FormattableStringBuilder() } }
+            };
+
+        public static IEnumerable<object[]> AppendInterpolated_Multiple_Data =>
+            new List<object[]>
+            {
+                new object[] { new object[] { "one", "two" } },
+                new object[] { new object[] { new FormattableStringBuilder(), new FormattableStringBuilder() } }
+            };
     }
 }
