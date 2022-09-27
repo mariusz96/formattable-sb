@@ -31,6 +31,13 @@ namespace FormattableSb.Tests
             Assert.Equal(args, fs.GetArguments());
         }
 
+        public static IEnumerable<object[]> AppendInterpolated_Single_Data =>
+            new List<object[]>
+            {
+                new object[] { new object[] { "one" } },
+                new object[] { new object[] { new FormattableStringBuilder() } }
+            };
+
         [Theory]
         [MemberData(nameof(AppendInterpolated_Multiple_Data))]
         public void AppendInterpolated_Multiple(object[] args)
@@ -46,11 +53,18 @@ namespace FormattableSb.Tests
             Assert.Equal(args, fs.GetArguments());
         }
 
-        [Theory]
-        [MemberData(nameof(AppendInterpolated_Single_Data))]
-        public void AppendInterpolated_Alignment(object[] args)
+        public static IEnumerable<object[]> AppendInterpolated_Multiple_Data =>
+            new List<object[]>
+            {
+                new object[] { new object[] { "one", "two" } },
+                new object[] { new object[] { new FormattableStringBuilder(), new FormattableStringBuilder() } }
+            };
+
+        [Fact]
+        public void AppendInterpolated_Alignment()
         {
             var fsb = new FormattableStringBuilder();
+            var args = new[] { "one" };
 
             var fs = fsb
                 .AppendInterpolated($"{args[0],-1}")
@@ -60,11 +74,11 @@ namespace FormattableSb.Tests
             Assert.Equal(args, fs.GetArguments());
         }
 
-        [Theory]
-        [MemberData(nameof(AppendInterpolated_Single_Data))]
-        public void AppendInterpolated_FormatString(object[] args)
+        [Fact]
+        public void AppendInterpolated_FormatString()
         {
             var fsb = new FormattableStringBuilder();
+            var args = new[] { "one" };
 
             var fs = fsb
                 .AppendInterpolated($"{args[0]:o}")
@@ -74,11 +88,11 @@ namespace FormattableSb.Tests
             Assert.Equal(args, fs.GetArguments());
         }
 
-        [Theory]
-        [MemberData(nameof(AppendInterpolated_Single_Data))]
-        public void AppendInterpolated_AlignmentAndFormatString(object[] args)
+        [Fact]
+        public void AppendInterpolated_AlignmentAndFormatString()
         {
             var fsb = new FormattableStringBuilder();
+            var args = new[] { "one" };
 
             var fs = fsb
                 .AppendInterpolated($"{args[0],-1:o}")
@@ -133,19 +147,5 @@ VALUES
 ({1})", sql.Format);
             Assert.Equal(new object[] { firstDayOfSummer, lastDayOfSummer }, sql.GetArguments());
         }
-
-        public static IEnumerable<object[]> AppendInterpolated_Single_Data =>
-            new List<object[]>
-            {
-                        new object[] { new object[] { "one" } },
-                        new object[] { new object[] { new FormattableStringBuilder() } }
-            };
-
-        public static IEnumerable<object[]> AppendInterpolated_Multiple_Data =>
-            new List<object[]>
-            {
-                new object[] { new object[] { "one", "two" } },
-                new object[] { new object[] { new FormattableStringBuilder(), new FormattableStringBuilder() } }
-            };
     }
 }
