@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32328.378
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FormattableSb", "FormattableSb\FormattableSb.csproj", "{C835A4CC-737D-4DD9-A2A8-A787CB6AF3BE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{412A8BE1-736F-4348-BB35-9D51461E395E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C835A4CC-737D-4DD9-A2A8-A787CB6AF3BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C835A4CC-737D-4DD9-A2A8-A787CB6AF3BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C835A4CC-737D-4DD9-A2A8-A787CB6AF3BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C835A4CC-737D-4DD9-A2A8-A787CB6AF3BE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C835A4CC-737D-4DD9-A2A8-A787CB6AF3BE} = {412A8BE1-736F-4348-BB35-9D51461E395E}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B23F81FD-BBB5-49BC-9EDE-848C111F87AC}
+	EndGlobalSection
+EndGlobal
