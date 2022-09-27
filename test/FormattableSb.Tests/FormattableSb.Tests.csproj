@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FormattableSb\FormattableSb.csproj" />
+    <ProjectReference Include="..\..\src\FormattableSb\FormattableSb.csproj" />
   </ItemGroup>
 
 </Project>
