@@ -47,15 +47,19 @@ context.Database.ExecuteSqlInterpolated(sql);
 ## API:
 ### AppendInterpolated:
 ```cs
-/// <summary>Appends the specified interpolated string to the end of the composite format string,
-/// replacing its arguments with placeholders and adding them as objects.</summary>
+/// <summary>
+/// Appends the specified interpolated string to the end of the composite format string,
+/// replacing its arguments with placeholders and adding them as objects.
+/// </summary>
 /// <param name="handler">The interpolated string to append, along with the arguments.</param>
 /// <returns>A reference to this instance after the append operation has completed.</returns>
 public FormattableStringBuilder AppendInterpolated([InterpolatedStringHandlerArgument("")] AppendInterpolatedHandler handler)
 ```
 ### AppendLine:
 ```cs
-/// <summary>Appends the default line terminator to the end of the composite format string.</summary>
+/// <summary>
+/// Appends the default line terminator to the end of the composite format string.
+/// </summary>
 /// <returns>A reference to this instance after the append operation has completed.</returns>
 public FormattableStringBuilder AppendLine()
 ```
