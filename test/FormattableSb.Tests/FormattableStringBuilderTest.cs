@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Xunit;
 
@@ -72,6 +73,39 @@ namespace FormattableSb.Tests
 
             Assert.Equal("{{one}} {{{0}}} {{{{three}}}} {{{{{1}}}}}", fs.Format);
             Assert.Equal(args, fs.GetArguments());
+        }
+
+        [Fact]
+        public void AppendInterpolated_Readme()
+        {
+            var firstDayOfSummer = new DateTime(2022, 6, 21);
+            var lastDayOfSummer = new DateTime(2022, 6, 22);
+
+            var sqlBuilder = new FormattableStringBuilder()
+                .AppendInterpolated($"INSERT INTO dbo.VacationDates (Date)")
+                .AppendLine()
+                .AppendInterpolated($"VALUES");
+
+            for (var date = firstDayOfSummer; date <= lastDayOfSummer; date = date.AddDays(1))
+            {
+                sqlBuilder
+                    .AppendLine()
+                    .AppendInterpolated($"({date})");
+
+                if (date != lastDayOfSummer)
+                {
+                    sqlBuilder.AppendInterpolated($",");
+                }
+            }
+
+            var sql = sqlBuilder.ToFormattableString();
+
+            Assert.Equal(
+@"INSERT INTO dbo.VacationDates (Date)
+VALUES
+({0}),
+({1})", sql.Format);
+            Assert.Equal(new object[] { firstDayOfSummer, lastDayOfSummer }, sql.GetArguments());
         }
     }
 }
