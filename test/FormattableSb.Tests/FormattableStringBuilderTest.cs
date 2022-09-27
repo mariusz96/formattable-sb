@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Xunit;
 
 namespace FormattableSb.Tests
@@ -148,7 +149,7 @@ namespace FormattableSb.Tests
 VALUES
 ({0}),
 ({1})", fs.Format);
-            Assert.Equal<object>(args, fs.GetArguments());
+            Assert.Equal(args.Cast<object?>(), fs.GetArguments());
         }
     }
 }
