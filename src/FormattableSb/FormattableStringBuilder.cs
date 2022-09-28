@@ -32,7 +32,7 @@ namespace FormattableSb
         }
 
         /// <summary>
-        /// Create a <see cref="FormattableString"/> from this builder.
+        /// Creates a <see cref="FormattableString"/> from this builder.
         /// </summary>
         /// <returns>The object that represents the composite format string and its arguments.</returns>
         public FormattableString ToFormattableString() => FormattableStringFactory.Create(_format.ToString(), _arguments.ToArray());
