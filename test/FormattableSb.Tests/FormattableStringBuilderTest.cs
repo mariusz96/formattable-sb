@@ -150,8 +150,8 @@ namespace FormattableSb.Tests
         {
             var fsb = new FormattableStringBuilder();
             var args = new[] {
-                new DateTime(2022, 6, 21),
-                new DateTime(2022, 6, 22)
+                DateTime.Now,
+                DateTime.Now.AddDays(1)
             };
 
             fsb
