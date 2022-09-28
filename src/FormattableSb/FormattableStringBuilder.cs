@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using System.ComponentModel;
+using System.Globalization;
 using System.Runtime.CompilerServices;
 using System.Text;
 
@@ -36,6 +37,7 @@ namespace FormattableSb
         /// <returns>The object that represents the composite format string and its arguments.</returns>
         public FormattableString ToFormattableString() => FormattableStringFactory.Create(_format.ToString(), _arguments.ToArray());
 
+        [EditorBrowsable(EditorBrowsableState.Never)]
         [InterpolatedStringHandler]
         public struct AppendInterpolatedHandler
         {
