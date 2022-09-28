@@ -62,6 +62,34 @@ namespace FormattableSb.Tests
             };
 
         [Fact]
+        public void AppendInterpolated_Verbatim()
+        {
+            var fsb = new FormattableStringBuilder();
+            var args = new[] { "one" };
+
+            var fs = fsb
+                .AppendInterpolated($@"{args[0]}")
+                .ToFormattableString();
+
+            Assert.Equal("{0}", fs.Format);
+            Assert.Equal(args.Cast<object?>(), fs.GetArguments());
+        }
+
+        [Fact]
+        public void AppendInterpolated_Verbatim_CSharp8()
+        {
+            var fsb = new FormattableStringBuilder();
+            var args = new[] { "one" };
+
+            var fs = fsb
+                .AppendInterpolated(@$"{args[0]}")
+                .ToFormattableString();
+
+            Assert.Equal("{0}", fs.Format);
+            Assert.Equal(args.Cast<object?>(), fs.GetArguments());
+        }
+
+        [Fact]
         public void AppendInterpolated_Alignment()
         {
             var fsb = new FormattableStringBuilder();
