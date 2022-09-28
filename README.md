@@ -43,7 +43,7 @@ context.Database.ExecuteSqlInterpolated(sql);
 ```
 ## Features:
 - Adheres to the C# language specification
-- Preservres aligment and format strings
+- Preservres alignment and format strings
 ## API:
 ### AppendInterpolated:
 ```cs
