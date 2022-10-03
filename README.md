@@ -43,6 +43,7 @@ context.Database.ExecuteSqlInterpolated(sql);
 ```
 ## Features:
 - Adheres to the C# language specification
+- Can be used when you want to modify a FormattableString
 - Preserves alignment and format strings
 ## API:
 ### AppendInterpolated:
