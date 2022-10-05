@@ -15,7 +15,7 @@
     <PackageId>FormattableSb</PackageId>
     <Version>1.0.4</Version>
     <Copyright>Mariusz Stępień</Copyright>
-    <PackageTags>formattablestringbuilder;mutable;formattablestring;formattable;string;strings;text;texts;builder;building;composite;format;formatting;interpolatedstring;interpolated;interpolation;expression;expressions;placeholder;placeholders;item;items;index;alignment;escaping;brace;braces</PackageTags>
+    <PackageTags>mutable;formattablestring;formattable;interpolated;interpolation;string;strings;builder;building;composite;format;formatting</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
