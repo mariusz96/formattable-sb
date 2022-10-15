@@ -54,7 +54,7 @@ context.Database.ExecuteSqlInterpolated(sql);
 /// </summary>
 /// <param name="handler">The interpolated string to append, along with the arguments.</param>
 /// <returns>A reference to this instance after the append operation has completed.</returns>
-public FormattableStringBuilder AppendInterpolated([InterpolatedStringHandlerArgument("")] AppendInterpolatedHandler handler)
+public FormattableStringBuilder AppendInterpolated([InterpolatedStringHandlerArgument("")] ref AppendInterpolatedHandler handler)
 ```
 ### AppendLine:
 ```cs

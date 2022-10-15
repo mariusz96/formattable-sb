@@ -19,7 +19,7 @@ namespace FormattableSb
         /// </summary>
         /// <param name="handler">The interpolated string to append, along with the arguments.</param>
         /// <returns>A reference to this instance after the append operation has completed.</returns>
-        public FormattableStringBuilder AppendInterpolated([InterpolatedStringHandlerArgument("")] AppendInterpolatedHandler handler) => this;
+        public FormattableStringBuilder AppendInterpolated([InterpolatedStringHandlerArgument("")] ref AppendInterpolatedHandler handler) => this;
 
         /// <summary>
         /// Appends the default line terminator to the end of the composite format string.
