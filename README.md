@@ -1,8 +1,8 @@
 # FormattableSb
 A mutable FormattableString:
 ```cs
-var firstDayOfSummer = new DateTime(2022, 6, 21);
-var lastDayOfSummer = new DateTime(2022, 9, 23);
+var firstDayOfSummer = new DateTime(2040, 6, 20);
+var lastDayOfSummer = new DateTime(2040, 9, 22);
 
 var sqlBuilder = new FormattableStringBuilder()
     .AppendInterpolated($"INSERT INTO dbo.VacationDates (Date)")
