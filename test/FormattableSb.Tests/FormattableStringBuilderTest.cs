@@ -179,5 +179,23 @@ namespace FormattableSb.Tests
 "({1})", fs.Format);
             Assert.Equal(args.Cast<object?>(), fs.GetArguments());
         }
+
+#if NET7_0_OR_GREATER
+        [Fact]
+        public void AppendInterpolated_RawStringLiteral()
+        {
+            var fsb = new FormattableStringBuilder();
+            var args = new[] { "one" };
+
+            var fs = fsb
+                .AppendInterpolated($"""
+{args[0]}
+""")
+                .ToFormattableString();
+
+            Assert.Equal("{0}", fs.Format);
+            Assert.Equal(args.Cast<object?>(), fs.GetArguments());
+        }
+#endif
     }
 }
