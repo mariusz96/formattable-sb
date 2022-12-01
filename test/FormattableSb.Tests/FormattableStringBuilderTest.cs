@@ -151,7 +151,8 @@ namespace FormattableSb.Tests
             var fsb = new FormattableStringBuilder();
             var args = new[] {
                 DateTime.Today,
-                DateTime.Today.AddDays(1)
+                DateTime.Today.AddDays(1),
+                DateTime.Today.AddDays(2)
             };
 
             fsb
@@ -159,13 +160,13 @@ namespace FormattableSb.Tests
                 .AppendLine()
                 .AppendInterpolated($"VALUES");
 
-            for (var date = args[0]; date <= args[1]; date = date.AddDays(1))
+            for (var date = args.First(); date <= args.Last(); date = date.AddDays(1))
             {
                 fsb
                     .AppendLine()
                     .AppendInterpolated($"({date})");
 
-                if (date != args[1])
+                if (date != args.Last())
                 {
                     fsb.AppendInterpolated($",");
                 }
@@ -176,7 +177,8 @@ namespace FormattableSb.Tests
             Assert.Equal("INSERT INTO dbo.VacationDates (Date)" + Environment.NewLine +
 "VALUES" + Environment.NewLine +
 "({0})," + Environment.NewLine +
-"({1})", fs.Format);
+"({1})," + Environment.NewLine +
+"({2})", fs.Format);
             Assert.Equal(args.Cast<object?>(), fs.GetArguments());
         }
 
