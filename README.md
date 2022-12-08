@@ -39,7 +39,7 @@ var sql = sqlBuilder.ToFormattableString();
 ### With EF Core:
 ```cs
 using var context = new VacationingContext();
-context.Database.ExecuteSqlInterpolated(sql);
+context.Database.ExecuteSql(sql);
 ```
 ## Features:
 - Adheres to the C# language specification
