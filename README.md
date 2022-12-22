@@ -64,14 +64,6 @@ public FormattableStringBuilder AppendInterpolated([InterpolatedStringHandlerArg
 /// <returns>A reference to this instance after the append operation has completed.</returns>
 public FormattableStringBuilder AppendLine()
 ```
-### ToFormattableString:
-```cs
-/// <summary>
-/// Creates a <see cref="FormattableString"/> from this builder.
-/// </summary>
-/// <returns>The object that represents the composite format string and its arguments.</returns>
-public FormattableString ToFormattableString()
-```
 ## Setup:
 - Install FormattableSb via NuGet Package Manager, Package Manager Console or dotnet CLI:
 ```
