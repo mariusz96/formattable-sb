@@ -35,7 +35,7 @@ namespace FormattableSb.Tests
         public static IEnumerable<object[]> AppendInterpolated_Single_Data =>
             new List<object[]>
             {
-                new object[] { new object?[] { "one" } },
+                new object[] { new object?[] { 1 } },
                 new object[] { new object?[] { new FormattableStringBuilder() } }
             };
 
@@ -57,7 +57,7 @@ namespace FormattableSb.Tests
         public static IEnumerable<object[]> AppendInterpolated_Multiple_Data =>
             new List<object[]>
             {
-                new object[] { new object?[] { "one", "two" } },
+                new object[] { new object?[] { 1, 2 } },
                 new object[] { new object?[] { new FormattableStringBuilder(), new FormattableStringBuilder() } }
             };
 
@@ -65,7 +65,7 @@ namespace FormattableSb.Tests
         public void AppendInterpolated_Alignment()
         {
             var fsb = new FormattableStringBuilder();
-            var args = new[] { "one" };
+            var args = new[] { 1 };
 
             var fs = fsb
                 .AppendInterpolated($"{args[0],-1}")
@@ -79,7 +79,7 @@ namespace FormattableSb.Tests
         public void AppendInterpolated_FormatString()
         {
             var fsb = new FormattableStringBuilder();
-            var args = new[] { "one" };
+            var args = new[] { 1 };
 
             var fs = fsb
                 .AppendInterpolated($"{args[0]:o}")
@@ -93,7 +93,7 @@ namespace FormattableSb.Tests
         public void AppendInterpolated_AlignmentAndFormatString()
         {
             var fsb = new FormattableStringBuilder();
-            var args = new[] { "one" };
+            var args = new[] { 1 };
 
             var fs = fsb
                 .AppendInterpolated($"{args[0],-1:o}")
@@ -107,13 +107,13 @@ namespace FormattableSb.Tests
         public void AppendInterpolated_Braces()
         {
             var fsb = new FormattableStringBuilder();
-            var args = new[] { "two", "four" };
+            var args = new[] { 2, 4 };
 
             var fs = fsb
-                .AppendInterpolated($"{{one}} {{{args[0]}}} {{{{three}}}} {{{{{args[1]}}}}}")
+                .AppendInterpolated($"{{1}} {{{args[0]}}} {{{{3}}}} {{{{{args[1]}}}}}")
                 .ToFormattableString();
 
-            Assert.Equal("{{one}} {{{0}}} {{{{three}}}} {{{{{1}}}}}", fs.Format);
+            Assert.Equal("{{1}} {{{0}}} {{{{3}}}} {{{{{1}}}}}", fs.Format);
             Assert.Equal(args.Cast<object?>(), fs.GetArguments());
         }
 
@@ -121,7 +121,7 @@ namespace FormattableSb.Tests
         public void AppendInterpolated_Verbatim()
         {
             var fsb = new FormattableStringBuilder();
-            var args = new[] { "one" };
+            var args = new[] { 1 };
 
             var fs = fsb
                 .AppendInterpolated($@"{args[0]}")
@@ -135,7 +135,7 @@ namespace FormattableSb.Tests
         public void AppendInterpolated_Verbatim_CSharp8()
         {
             var fsb = new FormattableStringBuilder();
-            var args = new[] { "one" };
+            var args = new[] { 1 };
 
             var fs = fsb
                 .AppendInterpolated(@$"{args[0]}")
@@ -159,7 +159,6 @@ namespace FormattableSb.Tests
                 .AppendInterpolated($"INSERT INTO dbo.VacationDates (Date)")
                 .AppendLine()
                 .AppendInterpolated($"VALUES");
-
             for (var date = args.First(); date <= args.Last(); date = date.AddDays(1))
             {
                 fsb
@@ -171,7 +170,6 @@ namespace FormattableSb.Tests
                     fsb.AppendInterpolated($",");
                 }
             }
-
             var fs = fsb.ToFormattableString();
 
             Assert.Equal("INSERT INTO dbo.VacationDates (Date)" + Environment.NewLine +
@@ -187,7 +185,7 @@ namespace FormattableSb.Tests
         public void AppendInterpolated_RawStringLiteral()
         {
             var fsb = new FormattableStringBuilder();
-            var args = new[] { "one" };
+            var args = new[] { 1 };
 
             var fs = fsb
                 .AppendInterpolated($"""
