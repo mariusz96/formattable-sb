@@ -6,9 +6,9 @@
     <Nullable>enable</Nullable>
     <Authors>Mariusz Stępień</Authors>
     <Description>A mutable FormattableString</Description>
-    <PackageProjectUrl>https://github.com/mariusz96/formattablesb</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/mariusz96/formattable-sb</PackageProjectUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <RepositoryUrl>https://github.com/mariusz96/formattablesb</RepositoryUrl>
+    <RepositoryUrl>https://github.com/mariusz96/formattable-sb</RepositoryUrl>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
