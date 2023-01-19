@@ -21,19 +21,19 @@ for (var date = firstDayOfSummer; date <= lastDayOfSummer; date = date.AddDays(1
     }
 }
 
-// sql.GetArguments():
-// [
-//   System.DateTime,
-//   System.DateTime,
-//   ...
-// ]
-
 // sql.Format:
 // INSERT INTO dbo.VacationDates (Date)
 // VALUES
 // ({0}),
 // ({1}),
 // ...
+
+// sql.GetArguments():
+// [
+//   System.DateTime,
+//   System.DateTime,
+//   ...
+// ]
 var sql = sqlBuilder.ToFormattableString();
 ```
 ### With EF Core:
