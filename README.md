@@ -1,15 +1,15 @@
 # FormattableSb
 A mutable FormattableString:
 ```cs
-var firstDayOfSummer = new DateTime(2040, 6, 20);
-var lastDayOfSummer = new DateTime(2040, 9, 22);
+DateTime firstDayOfSummer = new DateTime(2040, 6, 20);
+DateTime lastDayOfSummer = new DateTime(2040, 9, 22);
 
-var sqlBuilder = new FormattableStringBuilder()
+FormattableStringBuilder sqlBuilder = new FormattableStringBuilder()
     .AppendInterpolated($"INSERT INTO dbo.VacationDates (Date)")
     .AppendLine()
     .AppendInterpolated($"VALUES");
 
-for (var date = firstDayOfSummer; date <= lastDayOfSummer; date = date.AddDays(1))
+for (DateTime date = firstDayOfSummer; date <= lastDayOfSummer; date = date.AddDays(1))
 {
     sqlBuilder
         .AppendLine()
@@ -34,11 +34,11 @@ for (var date = firstDayOfSummer; date <= lastDayOfSummer; date = date.AddDays(1
 //   System.DateTime,
 //   ...
 // ]
-var sql = sqlBuilder.ToFormattableString();
+FormattableString sql = sqlBuilder.ToFormattableString();
 ```
 ### With EF Core:
 ```cs
-using var context = new VacationingContext();
+using VacationingContext context = new VacationingContext();
 context.Database.ExecuteSql(sql);
 ```
 ## Features:
