@@ -38,22 +38,22 @@ FormattableString sql = sqlBuilder.ToFormattableString();
 ```cs
 static List<DateTime> GetSummerDates()
 {
-    DateTime summerStartDate = new(2040, 6, 20);
-    DateTime summerEndDate = new(2040, 9, 22);
+    DateTime startDate = new(2040, 6, 20);
+    DateTime endDate = new(2040, 9, 22);
 
-    List<DateTime> summerDates = new();
+    List<DateTime> dates = new();
 
-    for (DateTime date = summerStartDate; date <= summerEndDate; date = date.AddDays(1))
+    for (DateTime date = startDate; date <= endDate; date = date.AddDays(1))
     {
-        summerDates.Add(date);
+        dates.Add(date);
     }
 
-    return summerDates;
+    return dates;
 }
 ```
 ### With EF Core:
 ```cs
-using VacationingContext context = new VacationingContext();
+using VacationingContext context = new();
 context.Database.ExecuteSql(sql);
 ```
 ## Features:
