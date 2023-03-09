@@ -1,21 +1,20 @@
 # FormattableSb
 A mutable FormattableString:
 ```cs
-DateTime firstDayOfSummer = new DateTime(2040, 6, 20);
-DateTime lastDayOfSummer = new DateTime(2040, 9, 22);
+List<DateTime> summerDates = GetSummerDates();
 
 FormattableStringBuilder sqlBuilder = new FormattableStringBuilder()
     .AppendInterpolated($"INSERT INTO dbo.VacationDates (Date)")
     .AppendLine()
     .AppendInterpolated($"VALUES");
 
-for (DateTime date = firstDayOfSummer; date <= lastDayOfSummer; date = date.AddDays(1))
+foreach (DateTime date in summerDates)
 {
     sqlBuilder
         .AppendLine()
         .AppendInterpolated($"({date})");
 
-    if (date != lastDayOfSummer)
+    if (date != summerDates.Last())
     {
         sqlBuilder.AppendInterpolated($",");
     }
@@ -35,6 +34,21 @@ for (DateTime date = firstDayOfSummer; date <= lastDayOfSummer; date = date.AddD
 //   ...
 // ]
 FormattableString sql = sqlBuilder.ToFormattableString();
+
+static List<DateTime> GetSummerDates()
+{
+    DateTime summerStartDate = new(2040, 6, 20);
+    DateTime summerEndDate = new(2040, 9, 22);
+
+    List<DateTime> summerDates = new();
+
+    for (DateTime date = summerStartDate; date <= summerEndDate; date = date.AddDays(1))
+    {
+        summerDates.Add(date);
+    }
+
+    return summerDates;
+}
 ```
 ### With EF Core:
 ```cs

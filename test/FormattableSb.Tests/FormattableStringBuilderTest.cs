@@ -149,23 +149,19 @@ namespace FormattableSb.Tests
         public void AppendInterpolated_Readme()
         {
             var fsb = new FormattableStringBuilder();
-            var args = new[] {
-                DateTime.Today,
-                DateTime.Today.AddDays(1),
-                DateTime.Today.AddDays(2)
-            };
+            var args = GetArgs();
 
             fsb
                 .AppendInterpolated($"INSERT INTO dbo.VacationDates (Date)")
                 .AppendLine()
                 .AppendInterpolated($"VALUES");
-            for (var date = args.First(); date <= args.Last(); date = date.AddDays(1))
+            foreach (var arg in args)
             {
                 fsb
                     .AppendLine()
-                    .AppendInterpolated($"({date})");
+                    .AppendInterpolated($"({arg})");
 
-                if (date != args.Last())
+                if (arg != args.Last())
                 {
                     fsb.AppendInterpolated($",");
                 }
@@ -178,6 +174,16 @@ namespace FormattableSb.Tests
                 "({1})," + Environment.NewLine +
                 "({2})", fs.Format);
             Assert.Equal(args.Cast<object?>(), fs.GetArguments());
+
+            static List<DateTime> GetArgs()
+            {
+                return new List<DateTime>
+                {
+                    DateTime.Today,
+                    DateTime.Today.AddDays(1),
+                    DateTime.Today.AddDays(2)
+                };
+            }
         }
 
 #if NET7_0_OR_GREATER
