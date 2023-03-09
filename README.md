@@ -34,8 +34,7 @@ foreach (DateTime date in summerDates)
 //   ...
 // ]
 FormattableString sql = sqlBuilder.ToFormattableString();
-```
-```cs
+
 static List<DateTime> GetSummerDates()
 {
     DateTime summerStartDate = new(2040, 6, 20);
