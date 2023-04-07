@@ -13,7 +13,7 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
     <PackageId>FormattableSb</PackageId>
-    <Version>2.0.10</Version>
+    <Version>2.0.11</Version>
     <Copyright>Mariusz Stępień</Copyright>
     <PackageTags>formattablestringbuilder;mutable;formattablestring;formattable;interpolated;interpolation;string;strings;builder;building;composite;format;formatting</PackageTags>
   </PropertyGroup>
