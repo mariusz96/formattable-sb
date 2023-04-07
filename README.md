@@ -54,7 +54,7 @@ static List<DateTime> GetSummerDates()
 ### With EF Core:
 ```cs
 using VacationingContext context = new();
-context.Database.ExecuteSql(sql);
+int rowsAffected = context.Database.ExecuteSql(sql);
 ```
 ## Features:
 - Adheres to the C# language specification
