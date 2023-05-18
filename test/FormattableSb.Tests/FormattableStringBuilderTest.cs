@@ -186,7 +186,7 @@ namespace FormattableSb.Tests
                     dates.Add(date);
                 }
 
-                return dates; ;
+                return dates;
             }
         }
 
