@@ -168,10 +168,10 @@ namespace FormattableSb.Tests
             }
             var fs = fsb.ToFormattableString();
 
-            Assert.Equal("INSERT INTO dbo.VacationDates (Date)" + Environment.NewLine +
-                "VALUES" + Environment.NewLine +
-                "({0})," + Environment.NewLine +
-                "({1})", fs.Format);
+            Assert.Equal(@"INSERT INTO dbo.VacationDates (Date)
+VALUES
+({0}),
+({1})", fs.Format, ignoreLineEndingDifferences: true);
             Assert.Equal(args.Cast<object?>(), fs.GetArguments());
 
             static List<DateTime> GetDates()
