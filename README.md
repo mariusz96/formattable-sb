@@ -8,13 +8,13 @@ FormattableStringBuilder sqlBuilder = new FormattableStringBuilder()
     .AppendLine()
     .AppendInterpolated($"VALUES");
 
-foreach (DateTime date in summerDates)
+for (int i = 0; i < summerDates.Count; i++)
 {
     sqlBuilder
         .AppendLine()
-        .AppendInterpolated($"({date})");
+        .AppendInterpolated($"({summerDates[i]})");
 
-    if (date != summerDates.Last())
+    if (i != summerDates.Count - 1)
     {
         sqlBuilder.AppendInterpolated($",");
     }
