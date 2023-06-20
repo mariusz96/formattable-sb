@@ -154,40 +154,40 @@ namespace FormattableSb.Tests
             fsb
                 .AppendInterpolated($"INSERT INTO dbo.VacationDates (Date)")
                 .AppendLine()
-                .AppendInterpolated($"VALUES");
-            for (int i = 0; i < args.Count; i++)
+                .AppendInterpolated($"VALUES ({args.First()})");
+
+            foreach (var arg in args.Skip(1))
             {
                 fsb
+                    .AppendInterpolated($",")
                     .AppendLine()
-                    .AppendInterpolated($"({args[i]})");
-
-                if (i != args.Count - 1)
-                {
-                    fsb.AppendInterpolated($",");
-                }
+                    .AppendInterpolated($"({arg})");
             }
+
             var fs = fsb.ToFormattableString();
 
-            Assert.Equal(@"INSERT INTO dbo.VacationDates (Date)
-VALUES
-({0}),
-({1})", fs.Format, ignoreLineEndingDifferences: true);
+            Assert.Equal(
+@"INSERT INTO dbo.VacationDates (Date)
+VALUES ({0}),
+({1}),
+({2})", fs.Format, ignoreLineEndingDifferences: true);
+
             Assert.Equal(args.Cast<object?>(), fs.GetArguments());
+        }
 
-            static List<DateTime> GetDates()
+        private static List<DateTime> GetDates()
+        {
+            var startDate = DateTime.Today;
+            var endDate = DateTime.Today.AddDays(2);
+
+            var dates = new List<DateTime>();
+
+            for (var date = startDate; date <= endDate; date = date.AddDays(1))
             {
-                var startDate = DateTime.Today;
-                var endDate = DateTime.Today.AddDays(1);
-
-                var dates = new List<DateTime>();
-
-                for (var date = startDate; date <= endDate; date = date.AddDays(1))
-                {
-                    dates.Add(date);
-                }
-
-                return dates;
+                dates.Add(date);
             }
+
+            return dates;
         }
 
 #if NET7_0_OR_GREATER

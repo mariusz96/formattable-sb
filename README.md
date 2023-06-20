@@ -6,29 +6,26 @@ List<DateTime> summerDates = GetSummerDates();
 FormattableStringBuilder sqlBuilder = new FormattableStringBuilder()
     .AppendInterpolated($"INSERT INTO dbo.VacationDates (Date)")
     .AppendLine()
-    .AppendInterpolated($"VALUES");
+    .AppendInterpolated($"VALUES ({summerDates.First()})");
 
-for (int i = 0; i < summerDates.Count; i++)
+foreach (var date in summerDates.Skip(1))
 {
     sqlBuilder
+        .AppendInterpolated($",")
         .AppendLine()
-        .AppendInterpolated($"({summerDates[i]})");
-
-    if (i != summerDates.Count - 1)
-    {
-        sqlBuilder.AppendInterpolated($",");
-    }
+        .AppendInterpolated($"({date})");
 }
 
 // sql.Format:
 // INSERT INTO dbo.VacationDates (Date)
-// VALUES
-// ({0}),
+// VALUES ({0}),
 // ({1}),
+// ({2}),
 // ...
 
 // sql.GetArguments():
 // [
+//   System.DateTime,
 //   System.DateTime,
 //   System.DateTime,
 //   ...
