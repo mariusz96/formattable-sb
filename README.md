@@ -8,7 +8,7 @@ FormattableStringBuilder sqlBuilder = new FormattableStringBuilder()
     .AppendLine()
     .AppendInterpolated($"VALUES ({summerDates.First()})");
 
-foreach (var date in summerDates.Skip(1))
+foreach (DateTime date in summerDates.Skip(1))
 {
     sqlBuilder
         .AppendInterpolated($",")
