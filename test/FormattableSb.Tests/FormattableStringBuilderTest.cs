@@ -198,9 +198,7 @@ VALUES ({0}),
             var args = new[] { 1 };
 
             var fs = fsb
-                .AppendInterpolated($"""
-{args[0]}
-""")
+                .AppendInterpolated($"""{args[0]}""")
                 .ToFormattableString();
 
             Assert.Equal("{0}", fs.Format);
