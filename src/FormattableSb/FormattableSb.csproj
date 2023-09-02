@@ -5,7 +5,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <Authors>Mariusz Stępień</Authors>
-    <Description>A mutable FormattableString</Description>
+    <Description>A mutable FormattableString class</Description>
     <PackageProjectUrl>https://github.com/mariusz96/formattable-sb</PackageProjectUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <RepositoryUrl>https://github.com/mariusz96/formattable-sb</RepositoryUrl>
