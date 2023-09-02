@@ -1,5 +1,5 @@
 # FormattableSb
-A mutable FormattableString:
+A mutable FormattableString class:
 ```cs
 List<DateTime> summerDates = GetSummerDates();
 
