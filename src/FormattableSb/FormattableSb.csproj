@@ -16,6 +16,7 @@
     <Version>2.0.16</Version>
     <Copyright>Mariusz Stępień</Copyright>
     <PackageTags>formattablestringbuilder;mutable;formattablestring;formattable;interpolated;interpolation;string;strings;builder;building;composite;format;formatting</PackageTags>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
