@@ -46,7 +46,9 @@ namespace FormattableSb
         {
             private readonly FormattableStringBuilder _builder;
 
-            /// <summary>Creates a handler used to append an interpolated string into a <see cref="FormattableStringBuilder"/>.</summary>
+            /// <summary>
+            /// Creates a handler used to append an interpolated string into a <see cref="FormattableStringBuilder"/>.
+            /// </summary>
             /// <param name="literalLength">The number of constant characters outside of interpolation expressions in the interpolated string.</param>
             /// <param name="formattedCount">The number of interpolation expressions in the interpolated string.</param>
             /// <param name="builder">The associated FormattableStringBuilder to which to append.</param>
@@ -56,11 +58,15 @@ namespace FormattableSb
                 _builder = builder;
             }
 
-            /// <summary>Writes the specified string to the handler.</summary>
+            /// <summary>
+            /// Writes the specified string to the handler.
+            /// </summary>
             /// <param name="value">The string to write.</param>
             public void AppendLiteral(string value) => _builder._format.Append(value.Replace("{", "{{").Replace("}", "}}"));
 
-            /// <summary>Writes the specified value to the handler.</summary>
+            /// <summary>
+            /// Writes the specified value to the handler.
+            /// </summary>
             /// <param name="value">The value to write.</param>
             /// <param name="alignment">Minimum number of characters that should be written for this value. If the value is negative, it indicates left-aligned and the required minimum is the absolute value.</param>
             /// <param name="format">The format string.</param>
