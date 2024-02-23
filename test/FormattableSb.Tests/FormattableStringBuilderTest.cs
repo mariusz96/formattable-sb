@@ -76,7 +76,7 @@ namespace FormattableSb.Tests
         }
 
         [Fact]
-        public void AppendInterpolated_FormatString()
+        public void AppendInterpolated_Format()
         {
             var fsb = new FormattableStringBuilder();
             var args = new[] { 1 };
@@ -90,7 +90,7 @@ namespace FormattableSb.Tests
         }
 
         [Fact]
-        public void AppendInterpolated_AlignmentAndFormatString()
+        public void AppendInterpolated_AlignmentAndFormat()
         {
             var fsb = new FormattableStringBuilder();
             var args = new[] { 1 };
