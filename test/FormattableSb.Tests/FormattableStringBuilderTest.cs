@@ -149,7 +149,7 @@ namespace FormattableSb.Tests
         public void AppendInterpolated_Readme()
         {
             var fsb = new FormattableStringBuilder();
-            var args = GetDates();
+            var args = GetSummerDates();
 
             fsb
                 .AppendInterpolated($"INSERT INTO dbo.VacationDates (Date)")
@@ -170,12 +170,14 @@ namespace FormattableSb.Tests
 @"INSERT INTO dbo.VacationDates (Date)
 VALUES ({0}),
 ({1}),
-({2})", fs.Format, ignoreLineEndingDifferences: true);
+({2})",
+                fs.Format,
+                ignoreLineEndingDifferences: true);
 
             Assert.Equal(args.Cast<object?>(), fs.GetArguments());
         }
 
-        private static List<DateTime> GetDates()
+        private static List<DateTime> GetSummerDates()
         {
             var startDate = DateTime.Today;
             var endDate = DateTime.Today.AddDays(2);
