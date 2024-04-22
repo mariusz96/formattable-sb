@@ -173,7 +173,6 @@ VALUES ({0}),
 ({2})",
                 fs.Format,
                 ignoreLineEndingDifferences: true);
-
             Assert.Equal(args.Cast<object?>(), fs.GetArguments());
         }
 
