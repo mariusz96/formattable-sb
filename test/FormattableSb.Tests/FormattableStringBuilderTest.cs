@@ -132,7 +132,7 @@ namespace FormattableSb.Tests
         }
 
         [Fact]
-        public void AppendInterpolated_Verbatim_CSharp8()
+        public void AppendInterpolated_VerbatimCSharp8()
         {
             var fsb = new FormattableStringBuilder();
             var args = new[] { 1 };
