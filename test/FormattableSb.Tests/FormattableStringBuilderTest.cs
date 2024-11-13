@@ -206,5 +206,23 @@ VALUES ({0}),
             Assert.Equal(args.Cast<object?>(), fs.GetArguments());
         }
 #endif
+
+        [Fact]
+        public void AppendInterpolatedLine()
+        {
+            var fsb = new FormattableStringBuilder();
+            var args = new[] { 1 };
+
+            var fs = fsb
+                .AppendInterpolatedLine($"{args[0]}")
+                .ToFormattableString();
+
+            Assert.Equal(
+@"{0}
+",
+                fs.Format,
+                ignoreLineEndingDifferences: true);
+            Assert.Equal(args.Cast<object?>(), fs.GetArguments());
+        }
     }
 }

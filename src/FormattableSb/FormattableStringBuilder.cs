@@ -32,6 +32,15 @@ namespace FormattableSb
         }
 
         /// <summary>
+        /// Appends the specified interpolated string followed by the default line terminator
+        /// to the end of the composite format string, replacing its arguments with placeholders
+        /// and adding them as objects.
+        /// </summary>
+        /// <param name="handler">The interpolated string to append, along with the arguments.</param>
+        /// <returns>A reference to this instance after the append operation has completed.</returns>
+        public FormattableStringBuilder AppendInterpolatedLine([InterpolatedStringHandlerArgument("")] ref AppendInterpolatedHandler handler) => AppendLine();
+
+        /// <summary>
         /// Creates a <see cref="FormattableString"/> from this builder.
         /// </summary>
         /// <returns>The object that represents the composite format string and its arguments.</returns>
