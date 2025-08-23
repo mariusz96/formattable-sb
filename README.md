@@ -56,7 +56,7 @@ static List<DateTime> GetSummerDates()
 ```cs
 using VacationingContext context = new();
 int rowsAffected = context.Database.ExecuteSql(sql);
-// dbug: 8/23/2025 14:13:54.402 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command)
+// dbug: 6/19/2040 15:59:59.999 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command)
 //       Executing DbCommand [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = DateTime2), @p2='?' (DbType = DateTime2), ...], CommandType='Text', CommandTimeout='30']
 //       INSERT INTO dbo.VacationDates (Date)
 //       VALUES (@p0),
