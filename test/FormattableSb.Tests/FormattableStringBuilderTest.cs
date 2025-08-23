@@ -154,14 +154,18 @@ namespace FormattableSb.Tests
             fsb
                 .AppendInterpolated($"INSERT INTO dbo.VacationDates (Date)")
                 .AppendLine()
-                .AppendInterpolated($"VALUES ({args.First()})");
+                .AppendInterpolated($"VALUES ");
 
-            foreach (var arg in args.Skip(1))
+            for (int i = 0; i < args.Count; i++)
             {
-                fsb
-                    .AppendInterpolated($",")
-                    .AppendLine()
-                    .AppendInterpolated($"({arg})");
+                if (i > 0)
+                {
+                    fsb
+                        .AppendInterpolated($",")
+                        .AppendLine();
+                }
+
+                fsb.AppendInterpolated($"({args[i]})");
             }
 
             var fs = fsb.ToFormattableString();
