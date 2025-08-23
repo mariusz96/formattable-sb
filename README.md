@@ -20,6 +20,7 @@ for (int i = 0; i < summerDates.Count; i++)
     sqlBuilder.AppendInterpolated($"({summerDates[i]})");
 }
 
+FormattableString sql = sqlBuilder.ToFormattableString();
 // sql.Format:
 // INSERT INTO dbo.VacationDates (Date)
 // VALUES ({0}),
@@ -34,7 +35,6 @@ for (int i = 0; i < summerDates.Count; i++)
 //   System.DateTime,
 //   ...
 // ]
-FormattableString sql = sqlBuilder.ToFormattableString();
 ```
 ```cs
 static List<DateTime> GetSummerDates()
@@ -56,6 +56,13 @@ static List<DateTime> GetSummerDates()
 ```cs
 using VacationingContext context = new();
 int rowsAffected = context.Database.ExecuteSql(sql);
+// dbug: 8/23/2025 14:13:54.402 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command)
+//       Executing DbCommand [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = DateTime2), @p2='?' (DbType = DateTime2), ...], CommandType='Text', CommandTimeout='30']
+//       INSERT INTO dbo.VacationDates (Date)
+//       VALUES (@p0),
+//       (@p1),
+//       (@p2),
+//       ....
 ```
 ## Features:
 - Adheres to the C# language specification
